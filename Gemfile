@@ -15,4 +15,5 @@ group :development, :test do
   gem 'sinatra-contrib'
   gem 'rack'
   gem 'webrick'
+  gem 'pg'
 end

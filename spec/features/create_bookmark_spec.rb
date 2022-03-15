@@ -1,7 +1,7 @@
 feature 'UI Elements' do
 
   scenario 'should display UI elements' do
-    visit '/create-bookmark'
+    visit '/bookmarks/new'
     expect(page).to have_content 'Enter title:'
     expect(page).to have_content 'Enter URL:'
     expect(page).to have_field 'title'

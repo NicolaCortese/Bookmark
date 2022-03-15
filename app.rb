@@ -21,7 +21,7 @@ class BookmarkManager < Sinatra::Base
     redirect '/bookmarks'
   end
 
-  get '/create-bookmark' do
+  get '/bookmarks/new' do
     erb :create_bookmark
   end
 

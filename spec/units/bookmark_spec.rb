@@ -3,7 +3,7 @@ require 'bookmark.rb'
 describe Bookmark do
 
   before do
-    @google = Bookmark.new("google", "https://www.google.com")
+    @google = Bookmark.new("1","google", "https://www.google.com")
   end
 
   it 'should initialise with a title attribute' do
@@ -17,13 +17,11 @@ describe Bookmark do
 end
 
 describe 'Bookmark List' do
-
+  
   it 'should return a list of bookmarks' do
     load_bookmarks
     bookmarks = Bookmark.all
-    expect(bookmarks).to include("http://www.google.com")
-    expect(bookmarks).to include("http://www.makersacademy.com")
-    expect(bookmarks).to include("http://www.destroyallsoftware.com")
+    expect(bookmarks).to include(Bookmark)
   end
 
 end
@@ -38,7 +36,11 @@ describe 'Create a new bookmark' do
 
   it 'should create a new bookmark' do
     Bookmark.create("Instagram", "instagram.com")
-    expect(Bookmark.all).to include 'instagram.com'
+    expect(Bookmark.all.last.url).to eq "instagram.com"
   end
 
+  it 'should increase the count of listed bookmarks' do
+  expect{Bookmark.create("Instagram", "instagram.com")}.to change { Bookmark.all.count}.from(0).to(1)
+  end 
+  
 end

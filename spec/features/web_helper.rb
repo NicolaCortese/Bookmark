@@ -1,10 +1,10 @@
 require 'pg'
 require 'database_connection'
+require './lib/bookmark'
 
 def load_bookmarks
   database = DatabaseConnection.connect
-  database.exec("INSERT INTO bookmarks(url) 
-  VALUES ('http://www.google.com'), 
-  ('http://www.makersacademy.com'), 
-  ('http://www.destroyallsoftware.com');")
+  Bookmark.create("Google","http://www.google.com")
+  Bookmark.create("Makers","http://www.makersacademy.com")
+  Bookmark.create("Destroyallsoftware","http://www.destroyallsoftware.com")
 end

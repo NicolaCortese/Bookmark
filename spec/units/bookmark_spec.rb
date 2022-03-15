@@ -27,3 +27,18 @@ describe 'Bookmark List' do
   end
 
 end
+
+describe 'Create a new bookmark' do
+
+  # let(:google) { Bookmark.new("Google", "google.com") }
+
+  it 'should respond to create' do
+    expect(Bookmark).to respond_to(:create).with(2).arguments
+  end
+
+  it 'should create a new bookmark' do
+    Bookmark.create("Instagram", "instagram.com")
+    expect(Bookmark.all).to include 'instagram.com'
+  end
+
+end

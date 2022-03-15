@@ -1,5 +1,5 @@
 require 'pg'
-require 'database_connection'
+require_relative 'database_connection.rb'
 
 class Bookmark
 
@@ -8,7 +8,6 @@ class Bookmark
   def initialize(title, url)
     @title = title
     @url = url
-
   end
   
   def self.all
@@ -17,5 +16,10 @@ class Bookmark
     result.map { |row| row['url'] }
   end
 
+  def self.create(title = "Untitled", url)
+    url = "NO URL" if url == ""
+    database = DatabaseConnection.connect
+    database.exec( "INSERT INTO bookmarks(url) VALUES ('#{url}');" )
+  end
 
 end

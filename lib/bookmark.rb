@@ -1,4 +1,5 @@
 require 'pg'
+require 'database_connection'
 
 class Bookmark
 
@@ -11,11 +12,9 @@ class Bookmark
   end
   
   def self.all
-  
-    database = PG.connect( dbname: 'bookmark_manager')
+    database = DatabaseConnection.connect
     result = database.exec( "SELECT * FROM bookmarks")
     result.map { |row| row['url'] }
-      
   end
 
 
